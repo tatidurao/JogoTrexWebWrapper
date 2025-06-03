@@ -9,6 +9,44 @@
   </head>
   <body>
       <script src="sketch.js"></script>
+      <style>
+        #rotate-screen {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #000000cc;
+          color: white;
+          font-size: 24px;
+          text-align: center;
+          padding-top: 40vh;
+          z-index: 9999;
+        }
+      </style>
+      
+      <div id="rotate-screen">🔄 Gire o dispositivo para jogar melhor!</div>
+      
+      <script>
+        function checkOrientation() {
+          const isPortrait = window.innerHeight > window.innerWidth;
+          const message = document.getElementById("rotate-screen");
+      
+          if (isPortrait) {
+            message.style.display = "block";
+          } else {
+            message.style.display = "none";
+          }
+        }
+      
+        // Checa quando a tela gira ou redimensiona
+        window.addEventListener("resize", checkOrientation);
+        window.addEventListener("orientationchange", checkOrientation);
+      
+        // Checa quando a página carrega
+        window.addEventListener("load", checkOrientation);
+      </script>
   
 
 </body></html>
