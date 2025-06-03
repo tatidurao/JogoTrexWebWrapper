@@ -103,7 +103,11 @@ function draw() {
     }
     
     //pular quando a barra de espaço é pressionada
-    if(touches.length > 0 ||keyDown("space")&& trex.y >= height-40) {
+    if(keyDown("space")&& trex.y >= height-40) {
+        trex.velocityY = -12;
+        jumpSound.play();
+    }
+    if(touches.length > 0 && trex.y >= height-40) {
         trex.velocityY = -12;
         jumpSound.play();
         touches = []
@@ -120,7 +124,7 @@ function draw() {
     
     if(obstaclesGroup.isTouching(trex)){
         //trex.velocityY = -12;
-        jumpSound.play();
+        //jumpSound.play();
         gameState = END;
         dieSound.play()
       
